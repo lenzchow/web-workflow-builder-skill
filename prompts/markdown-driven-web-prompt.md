@@ -2,17 +2,17 @@
 
 ## 1. 目标
 
-建立一套“设计模板 + 页面 Markdown + 项目代码”的网页生成工作流。
+建立一套“web-prompt 风格模板 + 页面 Markdown + 项目代码”的网页生成工作流。
 
-当需要生成网页时，先根据页面需求选择合适的风格 Prompt，再读取其中的 Markdown 设计模板，继承对应的设计、架构和 UI 思路；然后根据本次业务目标生成页面 Markdown，并由当前项目的代码实现和渲染网页。风格 Prompt 可以有多个，当前项目只是其中一种实现。
+当需要生成网页时，先与用户确认页面风格，再选择合适的 web-prompt，读取其中的设计、架构和 UI 思路；然后根据本次业务目标，在目标项目中生成页面 Markdown 和程序代码。web-prompt 可以有多个，当前项目只是其中一种实现。
 
 每次创建新网页时：
 
-1. 读取已有的设计模板；
-2. 分析当前项目的技术架构；
-3. 根据新的业务目标重新组织页面；
-4. 通过程序代码实现网页能力；
-5. 通过 Markdown 配置页面内容和可配置表现；
+1. 与用户确认页面风格并选择 web-prompt；
+2. 读取选定 web-prompt；
+3. 分析当前项目的技术架构；
+4. 根据新的业务目标重新组织页面；
+5. 在目标项目中同时建立或调整页面 Markdown 和程序代码；
 6. 使用代码与 Markdown 共同完成页面渲染。
 
 Markdown 不替代代码，代码也不能完全取代 Markdown。
@@ -59,25 +59,22 @@ Markdown 内容 → 设计规范 → 页面配置 → 当前项目的渲染适�
 
 ## 5. Markdown 文件分层
 
-建议分为可复用设计模板和当前项目内容文件：
+web-prompt 由 Skill 统一管理；页面 Markdown 生成在目标项目中：
 
 ```text
-template/
-├── design-principles.md
-├── visual-language.md
-├── layout-patterns.md
-├── interaction-patterns.md
-├── data-display-principles.md
-└── responsive-rules.md
+<skill>/references/web-prompts/
+├── trading-style-web-prompt.md
+├── editorial-style-web-prompt.md
+└── saas-style-web-prompt.md
 
-content/<project-name>/
+<target-project>/content/
 ├── pages/
 ├── site-structure.md
 ├── data-display.md
 └── README.md
 ```
 
-模板文件描述跨项目复用的设计思路；内容文件描述本次项目需要展示什么。
+web-prompt 描述跨项目复用的设计思路；目标项目中的页面 Markdown 描述本次项目需要展示什么，并用于后续人工微调。
 
 ## 6. AI 修改规则
 

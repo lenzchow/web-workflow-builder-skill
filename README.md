@@ -2,12 +2,14 @@
 
 一套用于 AI 网页设计与开发的可复用 Prompt。
 
-这套 Prompt 将网页开发拆成两层：
+这套 Prompt 将网页开发拆成四个角色：
 
-- **设计工作流层**：沉淀视觉语言、布局原则、交互模式和数据展示方法。
-- **项目实现层**：根据当前项目的技术架构，通过代码实现渲染能力，并使用 Markdown 管理当前页面内容和配置。
+- **Skill**：根据页面需求与用户确认结果选择风格 Prompt，并组织生成流程。
+- **Web Prompt**：保存可复用的页面设计、架构和 UI 风格。
+- **页面 Markdown**：生成在目标项目中，用于保存当前页面内容和配置，方便后续微调。
+- **程序代码**：生成在目标项目中，根据项目技术架构实现渲染能力、业务逻辑和交互。
 
-使用时先由 Skill 根据页面需求选择风格 Prompt，再读取对应的设计模板生成网页。风格 Prompt 复用设计思路，页面 Markdown 根据本次业务目标变化，程序代码提供当前项目所需的实现能力。
+使用时先调用 Skill，与用户确认页面风格，再选择对应的 web-prompt。Skill 读取风格模板后，在目标项目中同时生成或调整程序代码和页面 Markdown。
 
 它解决的问题是：避免每次生成网页都从零开始，也避免把某个项目的固定页面结构、框架或组件库误认为通用规范。
 
@@ -15,19 +17,19 @@
 
 | 文件 | 用途 |
 | --- | --- |
-| `prompts/markdown-driven-web-prompt.md` | 将网页内容、结构和可配置表现交给 Markdown 管理的开发规范 |
-| `prompts/markdown-web-builder-skill-prompt.md` | 将上述工作流整理为可重复使用 Agent Skill 的创建规范 |
+| `prompts/markdown-driven-web-prompt.md` | 代码、web-prompt 与页面 Markdown 协同工作的网页开发规范 |
+| `prompts/markdown-web-builder-skill-prompt.md` | 将上述流程整理为可重复使用 Agent Skill 的创建规范 |
 
-后续可以继续增加不同风格的 Prompt，例如 `trading-style-web-prompt`、`editorial-style-web-prompt` 或 `saas-style-web-prompt`。Skill 根据用户需求选择风格，而不是固定使用单一模板。
+后续可以继续增加不同风格的 web-prompt，例如 `trading-style-web-prompt`、`editorial-style-web-prompt` 或 `saas-style-web-prompt`。这些风格模板属于 Skill 的资源，不是目标项目生成的页面文件。
 
 ## 使用方式
 
-1. 先建立或维护一个风格 Prompt，沉淀网页设计、架构和 UI 思路。
-2. 生成网页时调用 Skill，由 Skill 根据需求选择风格 Prompt。
-3. 新网页需要在建立代码的同时建立页面 Markdown。
-4. 复用已有架构时，可以复用并调整当前项目的 Markdown。
-5. 每个新项目先识别自身的框架、构建工具和组件库，再选择对应的渲染实现。
-6. 设计规范跨项目复用，页面 Markdown 根据当前业务目标自由变化。
+1. 在 Skill 的 `references/web-prompts/` 中建立或维护风格 Prompt。
+2. 生成网页时调用 Skill，由 Skill 与用户确认风格并选择对应模板。
+3. 新网页需要在目标项目中同时建立代码和页面 Markdown。
+4. 复用已有架构时，优先复用并调整目标项目已有的代码和 Markdown。
+5. 每个项目先识别自身的框架、构建工具和组件库，再选择对应的渲染实现。
+6. 风格 Prompt 跨项目复用，页面 Markdown 根据当前业务目标自由变化。
 
 ## 核心原则
 
