@@ -1,4 +1,4 @@
-# Web Workflow Builder Prompt
+# Web Workflow Builder Skill
 
 一套用于 AI 网页设计与开发的可复用 Prompt 和风格模板资源。
 
