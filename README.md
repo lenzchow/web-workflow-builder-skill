@@ -17,8 +17,9 @@
 
 | 文件 | 用途 |
 | --- | --- |
-| `prompts/markdown-driven-web-prompt.md` | 代码、web-prompt 与页面 Markdown 协同工作的网页开发规范 |
-| `prompts/markdown-web-builder-skill-prompt.md` | 将上述流程整理为可重复使用 Agent Skill 的创建规范 |
+| `SKILL.md` | 实际用于生成网页的 Agent Skill |
+| `references/markdown-driven-web-prompt.md` | 代码、web-prompt 与页面 Markdown 协同工作的网页开发规范 |
+| `docs/markdown-web-builder-skill-prompt.md` | 用于创建或重写 Agent Skill 的元 Prompt |
 | `references/web-prompts/` | 可选择的页面风格 Prompt 模板 |
 | `references/markdown-spec.md` | 页面 Markdown 使用边界和语法规范 |
 | `references/workflow.md` | Skill 生成网页的执行流程 |
@@ -35,6 +36,22 @@
 4. 复用已有架构时，优先复用并调整目标项目已有的代码和 Markdown。
 5. 每个项目先识别自身的框架、构建工具和组件库，再选择对应的渲染实现。
 6. 风格 Prompt 跨项目复用，页面 Markdown 和程序代码只属于目标项目。
+
+## 目录结构
+
+```text
+SKILL.md
+scripts/
+references/
+├── markdown-driven-web-prompt.md
+├── markdown-spec.md
+├── workflow.md
+├── self-checklist.md
+└── web-prompts/
+    └── trading-style-web-prompt.md
+docs/
+└── markdown-web-builder-skill-prompt.md
+```
 
 ## 核心原则
 
